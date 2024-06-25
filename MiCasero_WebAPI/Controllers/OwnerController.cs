@@ -18,7 +18,7 @@ namespace MiCasero_WebAPI.Controllers
             _ownerService = service;
         }
         [HttpGet]
-        public async Task<IActionResult> LoginOwner(RegisterOwnerDTO ownerdto)
+        public async Task<IActionResult> LoginOwner([FromBody] RegisterOwnerDTO ownerdto)
         {
             if (ownerdto == null)
             {
@@ -32,7 +32,7 @@ namespace MiCasero_WebAPI.Controllers
             return Ok(login);
         }
         [HttpPost]
-        public async Task<IActionResult> RegisterOwner(RegisterOwnerDTO ownerdto)
+        public async Task<IActionResult> RegisterOwner([FromBody] RegisterOwnerDTO ownerdto)
         {
             if (await _ownerService.Register(ownerdto) == null)
             {

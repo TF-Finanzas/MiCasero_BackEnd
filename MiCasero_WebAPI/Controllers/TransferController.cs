@@ -15,7 +15,7 @@ namespace MiCasero_WebAPI.Controllers
             _transferService = transferService;
         }
         [HttpPost]
-        public async Task<IActionResult> PostTransfer(CreateTransferDTO transferDTO)
+        public async Task<IActionResult> PostTransfer([FromBody] CreateTransferDTO transferDTO)
         {
             if (await _transferService.CreateTranfer(transferDTO) == null)
             {

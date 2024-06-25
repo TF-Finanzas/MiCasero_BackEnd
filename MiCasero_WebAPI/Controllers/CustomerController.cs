@@ -15,7 +15,7 @@ namespace MiCasero_WebAPI.Controllers
             _customerService = customerService;
         }
         [HttpPost]
-        public async Task<IActionResult> PostCustomer(CreateCustomerDTO customerDTO)
+        public async Task<IActionResult> PostCustomer([FromBody] CreateCustomerDTO customerDTO)
         {
             if (await _customerService.CreateCustomer(customerDTO) == null)
             {
@@ -33,10 +33,10 @@ namespace MiCasero_WebAPI.Controllers
             }
             return Ok(customers_dto);
         }
-        [HttpPut("{id:int}")]
-        public async Task<IActionResult> UpdateCredit(int id, decimal credit)
+        [HttpPut]
+        public async Task<IActionResult> UpdateCredit([FromBody] UpdateCustomerDTO customerDTO)
         {
-            var customer = await _customerService.UpdateFinancial(id, credit);
+            var customer = await _customerService.UpdateFinancial(customerDTO.Id, customerDTO.Credit);
             if (customer == null)
             {
                 return BadRequest();

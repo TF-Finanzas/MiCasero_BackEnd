@@ -17,7 +17,7 @@ namespace MiCasero_WebAPI.Controllers
             _transferService = transferService;
         }
         [HttpPost]
-        public async Task<IActionResult> PostBill(CreateBillDTO billDTO)
+        public async Task<IActionResult> PostBill([FromBody] CreateBillDTO billDTO)
         {
             if (await _billService.CreateBill(billDTO) == null)
             {
