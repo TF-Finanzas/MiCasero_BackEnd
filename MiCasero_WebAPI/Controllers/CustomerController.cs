@@ -2,11 +2,13 @@
 using MiCasero_WebAPI.Dtos.Owner;
 using MiCasero_WebAPI.Interfaces;
 using MiCasero_WebAPI.Services;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MiCasero_WebAPI.Controllers
 {
     [Route("Api/[Controller]")]
+    [EnableCors("AllowAll")]
     public class CustomerController:ControllerBase
     {
         private readonly ICustomerService _customerService;

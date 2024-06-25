@@ -2,11 +2,13 @@
 using MiCasero_WebAPI.Dtos.Customer;
 using MiCasero_WebAPI.Interfaces;
 using MiCasero_WebAPI.Services;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MiCasero_WebAPI.Controllers
 {
     [Route("Api/[Controller]")]
+    [EnableCors("AllowAll")]
     public class BillController:ControllerBase
     {
         private readonly IBillService _billService;

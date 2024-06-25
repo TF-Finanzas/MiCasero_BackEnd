@@ -2,6 +2,7 @@
 using MiCasero_WebAPI.Interfaces;
 using MiCasero_WebAPI.Mappers;
 using MiCasero_WebAPI.Models;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pag
 namespace MiCasero_WebAPI.Controllers
 {
     [Route("API/[Controller]")]
+    [EnableCors("AllowAll")]
     public class OwnerController : ControllerBase
     {
         private readonly IOwnerService _ownerService;
@@ -17,7 +19,8 @@ namespace MiCasero_WebAPI.Controllers
         {
             _ownerService = service;
         }
-        [HttpGet]
+        [HttpPost]
+        [Route("Login")]
         public async Task<IActionResult> LoginOwner([FromBody] RegisterOwnerDTO ownerdto)
         {
             if (ownerdto == null)
@@ -32,6 +35,7 @@ namespace MiCasero_WebAPI.Controllers
             return Ok(login);
         }
         [HttpPost]
+        [Route("Register")]
         public async Task<IActionResult> RegisterOwner([FromBody] RegisterOwnerDTO ownerdto)
         {
             if (await _ownerService.Register(ownerdto) == null)

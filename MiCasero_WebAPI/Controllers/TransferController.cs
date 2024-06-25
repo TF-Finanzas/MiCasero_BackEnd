@@ -2,11 +2,13 @@
 using MiCasero_WebAPI.Dtos.Transfer;
 using MiCasero_WebAPI.Interfaces;
 using MiCasero_WebAPI.Services;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MiCasero_WebAPI.Controllers
 {
     [Route("Api/[Controller]")]
+    [EnableCors("AllowAll")]
     public class TransferController:ControllerBase
     {
         private readonly ITransferService _transferService;
